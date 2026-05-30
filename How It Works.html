@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How It Works — FutianFinds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Stepper / vertical timeline */
+  .timeline { background: #fff; }
+  .timeline-wrap {
+    position: relative;
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .timeline-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    position: relative;
+    padding-bottom: 56px;
+  }
+  .timeline-step:last-child { padding-bottom: 0; }
+  .timeline-step::before {
+    content: "";
+    position: absolute;
+    left: 36px;
+    top: 80px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--orange), rgba(232,133,59,0.15));
+  }
+  .timeline-step:last-child::before { display: none; }
+  .ts-num {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: 800;
+    position: relative; z-index: 1;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 2px var(--orange);
+  }
+  .timeline-step.active .ts-num { background: var(--orange); box-shadow: 0 0 0 2px var(--navy); }
+  .ts-body {
+    background: var(--cream);
+    border: 1px solid var(--line-dark);
+    border-radius: 16px;
+    padding: 32px 36px;
+    margin-top: 4px;
+    transition: all .2s;
+  }
+  .ts-body:hover { border-color: rgba(232,133,59,0.4); transform: translateX(4px); }
+  .ts-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+  .ts-header h3 { font-size: 26px; font-weight: 700; margin: 0; letter-spacing: -0.01em; color: var(--navy); }
+  .ts-duration {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--orange);
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    background: rgba(232,133,59,0.10);
+    border-radius: 100px;
+  }
+  .ts-body p.lead { color: var(--ink); font-size: 16px; line-height: 1.6; margin: 0 0 22px; }
+  .ts-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-dark);
+  }
+  @media (max-width: 720px) { .ts-actions { grid-template-columns: 1fr; gap: 18px; } }
+  .ts-actions .col h4 {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .ts-actions ul { list-style: none; padding: 0; margin: 0; }
+  .ts-actions li {
+    font-size: 14px; line-height: 1.5;
+    padding: 5px 0;
+    display: flex; gap: 10px;
+  }
+  @media (max-width: 720px) {
+    .timeline-step { grid-template-columns: 56px 1fr; gap: 20px; }
+    .timeline-step::before { left: 25px; top: 60px; }
+    .ts-num { width: 52px; height: 52px; font-size: 18px; }
+    .ts-body { padding: 24px 22px; }
+    .ts-header h3 { font-size: 20px; }
+  }
+
+  /* What to expect */
+  .expect { background: var(--cream); }
+  .expect-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 48px;
+  }
+  @media (max-width: 800px) { .expect-grid { grid-template-columns: 1fr; } }
+  .expect-item {
+    background: #fff;
+    border: 1px solid var(--line-dark);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color .15s;
+  }
+  .expect-item.open { border-color: rgba(232,133,59,0.4); }
+  .expect-q {
+    width: 100%;
+    padding: 22px 26px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .expect-q:hover { background: rgba(232,133,59,0.04); }
+  .expect-q .toggle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--cream);
+    color: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: transform .2s;
+  }
+  .expect-item.open .toggle { background: var(--orange); color: #fff; transform: rotate(45deg); }
+  .expect-a {
+    padding: 0 26px 22px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Process visualization */
+  .process-viz {
+    background: var(--navy);
+    color: #fff;
+    padding: 80px 0;
+  }
+  .viz-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 56px;
+  }
+  @media (max-width: 900px) { .viz-cards { grid-template-columns: 1fr; } }
+  .viz-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 30px 26px;
+  }
+  .viz-card .day { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--orange); letter-spacing: 0.1em; margin-bottom: 14px; text-transform: uppercase; }
+  .viz-card h3 { font-size: 19px; font-weight: 700; margin: 0 0 10px; letter-spacing: -0.01em; }
+  .viz-card p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.55; margin: 0; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="how-it-works.jsx"></script>
+</body>
+</html>
