@@ -166,6 +166,47 @@ function WhatToExpect() {
   );
 }
 
+/* ---------- INSIDE FUTIAN MARKET ---------- */
+function InsideMarket() {
+  const districts = [
+    { n: 1, cats: ["Accessories", "Toys", "Artificial flowers", "Hair accessories", "Jewelry"] },
+    { n: 2, cats: ["Hardware", "Tools", "Electrical", "Locks", "Bathroom fittings"] },
+    { n: 3, cats: ["Stationery", "Bags", "Umbrellas", "Rain gear", "Cases"] },
+    { n: 4, cats: ["Socks", "Underwear", "Textiles", "Scarves", "Hats & gloves"] },
+    { n: 5, cats: ["Imported goods", "Bedding", "Curtains", "Home textiles"] },
+  ];
+  return (
+    <section className="inside-market" data-screen-label="05 Inside Futian Market">
+      <div className="container">
+        <div className="section-head centered">
+          <span className="eyebrow">Inside Futian Market</span>
+          <h2>Five districts. One roof.</h2>
+          <p style={{margin: "0 auto"}}>The world's largest wholesale market, mapped by what each district sells. This is the ground we cover for you — in person, on camera, every visit.</p>
+        </div>
+        <div className="district-map">
+          {districts.map((d) => (
+            <div className="district-card" key={d.n}>
+              <div className="dc-head">
+                <span className="dc-num">{d.n}</span>
+                <span className="dc-label">District {d.n}</span>
+              </div>
+              <ul className="dc-cats">
+                {d.cats.map((c) => (
+                  <li key={c}>{c}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="map-note">
+          <Icon.Pin width="16" height="16" />
+          <span><strong>75,000+ booths across 5 districts.</strong> We walk it so you don't have to.</span>
+        </p>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- APP ---------- */
 function App() {
   return (
@@ -179,13 +220,14 @@ function App() {
       <Timeline />
       <TimingViz />
       <WhatToExpect />
+      <InsideMarket />
       <FinalCTA
         title="Ready to start?"
-        sub="Pick a package or book a free 15-minute call. We'll tell you honestly whether sourcing from Yiwu is the right move for your product."
+        sub="Pick a package or message us on WhatsApp. We'll tell you honestly whether sourcing from Yiwu is the right move for your product."
         primaryLabel="See Packages"
         primaryHref="Services.html"
-        secondaryLabel="Book a free call"
-        secondaryHref="Contact.html"
+        secondaryLabel="Message us on WhatsApp"
+        secondaryHref={CONTACT.whatsappUrl}
       />
       <Footer />
     </>

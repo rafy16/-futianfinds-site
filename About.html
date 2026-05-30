@@ -19,21 +19,20 @@
   .bio-photo {
     aspect-ratio: 4/5;
     border-radius: 16px;
-    background:
-      repeating-linear-gradient(45deg, rgba(27,43,58,0.06) 0 14px, rgba(27,43,58,0.02) 14px 28px),
-      var(--cream-2);
-    border: 1px dashed rgba(27,43,58,0.2);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    text-align: center;
-    padding: 24px;
+    background: var(--navy);
+    border: 1px solid rgba(27,43,58,0.12);
     position: relative;
     position: sticky; top: 100px;
   }
+  .bio-photo .bio-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: 0; border-radius: 16px;
+    z-index: 1;
+  }
   .bio-photo .name-tag {
     position: absolute; bottom: -24px; left: 24px;
+    z-index: 2;
     background: var(--navy); color: #fff;
     padding: 18px 22px;
     border-radius: 12px;
@@ -43,6 +42,7 @@
   .name-tag .role { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 4px; letter-spacing: 0.04em; }
   .bio-photo .badge-corner {
     position: absolute; top: 16px; right: 16px;
+    z-index: 2;
     background: rgba(232,133,59,0.95); color: #fff;
     padding: 6px 12px;
     border-radius: 4px;

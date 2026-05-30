@@ -6,7 +6,15 @@ function Bio() {
         <div className="bio-grid">
           <div className="bio-photo">
             <span className="badge-corner">Based in Yiwu</span>
-            <div>[ FUTIANFINDS TEAM — GROUP PHOTO<br/>4:5 crop · Yiwu market backdrop<br/>warm natural light ]</div>
+            <iframe
+              className="bio-video"
+              src="https://www.youtube.com/embed/K3ykeVcrl6s?rel=0&playsinline=1&modestbranding=1"
+              title="FutianFinds — Inside Yiwu"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
             <div className="name-tag">
               <div className="name">FutianFinds Team</div>
               <div className="role">Based in Yiwu, China</div>
@@ -28,7 +36,7 @@ function Bio() {
               We're deliberately small. We'd rather work closely with a handful of great clients than churn through hundreds. Right now we're taking on our <strong>first founding clients</strong> — and we'd love to hear about your product.
             </p>
             <div style={{display: "flex", gap: 14, marginTop: 28, flexWrap: "wrap"}}>
-              <a href="Contact.html" className="btn btn-primary">Book a free call <Icon.ArrowRight /></a>
+              <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener" className="btn btn-primary"><Icon.WhatsApp /> Message us on WhatsApp</a>
               <a href="Services.html" className="btn btn-outline-dark">See Packages</a>
             </div>
           </div>
@@ -186,9 +194,9 @@ function App() {
       <OurProcess />
       <FinalCTA
         title="Ready to start?"
-        sub="Book a free 15-minute call. Tell us about your product. We'll tell you honestly whether sourcing from Yiwu is the right move."
-        primaryLabel="Book a free call"
-        primaryHref="Contact.html"
+        sub="Message us on WhatsApp or fill out the form. Tell us about your product and we'll tell you honestly whether sourcing from Yiwu is the right move."
+        primaryLabel="Message us on WhatsApp"
+        primaryHref={CONTACT.whatsappUrl}
         secondaryLabel="See Packages"
         secondaryHref="Services.html"
       />

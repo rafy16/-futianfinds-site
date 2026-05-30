@@ -54,6 +54,11 @@ function ContactForm() {
 
   return (
     <form className="form-card" onSubmit={onSubmit} noValidate>
+      <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener" className="btn btn-whatsapp btn-block wa-btn">
+        <Icon.WhatsApp /> Message us on WhatsApp
+      </a>
+      <div className="wa-or"><span>Or fill out the form below</span></div>
+
       <h2>Tell us about your product.</h2>
       <p className="sub">The more detail, the faster we can scope it. Replies within 3 business hours.</p>
 
@@ -147,13 +152,13 @@ function SidePanel() {
         <span className="row-link">{CONTACT.email} <Icon.ArrowRight /></span>
       </a>
 
-      <a href="#book-call" className="side-card" style={{display: "block"}}>
+      <a href="FAQ.html" className="side-card" style={{display: "block"}}>
         <div className="sc-head">
-          <span className="ic"><Icon.Calendar /></span>
-          <h3>Book a free call</h3>
+          <span className="ic"><Icon.Search /></span>
+          <h3>Prefer to read first?</h3>
         </div>
-        <p>15-minute Zoom or Google Meet. We'll scope your project together — no pitch deck, no pressure.</p>
-        <span className="row-link">Open the calendar <Icon.ArrowDown /></span>
+        <p>Pricing, shipping, MOQs, QC, refunds — we've answered the questions we hear most.</p>
+        <span className="row-link">Read the FAQ <Icon.ArrowRight /></span>
       </a>
     </div>
   );
@@ -167,42 +172,6 @@ function ContactMain() {
         <div className="contact-grid">
           <ContactForm />
           <SidePanel />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- CALENDLY ---------- */
-function CalendlySection() {
-  return (
-    <section className="section calendly-section" id="book-call" data-screen-label="04 Calendly">
-      <div className="container">
-        <div className="section-head centered">
-          <span className="eyebrow">Book a free call</span>
-          <h2>15 minutes. Zero pitch deck.</h2>
-          <p>Hop on a Zoom with our team. Tell us about your product. We'll tell you honestly whether Yiwu is the right sourcing market — even if it means recommending Shenzhen or Vietnam instead.</p>
-        </div>
-        <div className="calendly-card">
-          <div className="calendly-left">
-            <h3>What we'll cover</h3>
-            <p>A quick scoping conversation to figure out the right package for your stage — or whether you even need one.</p>
-            <ul>
-              <li><span className="check"><Icon.Check /></span>Your product + sourcing history so far</li>
-              <li><span className="check"><Icon.Check /></span>Realistic Yiwu price ranges for your niche</li>
-              <li><span className="check"><Icon.Check /></span>Which package fits (or none — that's okay)</li>
-              <li><span className="check"><Icon.Check /></span>Your questions, however basic</li>
-            </ul>
-            <a href="#" className="btn btn-primary">Pick a time <Icon.Calendar /></a>
-          </div>
-          <div className="calendly-embed">
-            <div className="badge-lg">CALENDLY EMBED</div>
-            <div>
-              Replace with your Calendly widget<br/>
-              &lt;div class="calendly-inline-widget"...&gt;<br/>
-              or paste embed code in Shopify Custom Liquid
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -261,10 +230,9 @@ function App() {
       <PageHero
         page="Contact"
         title="Let's get your product sourced."
-        sub="Send a message, hop on WhatsApp, or book a 15-min call. However you want to start — we're ready."
+        sub="Send us a WhatsApp or fill out the form — whichever's easier. We reply within 3 business hours."
       />
       <ContactMain />
-      <CalendlySection />
       <Location />
       <Footer />
     </>

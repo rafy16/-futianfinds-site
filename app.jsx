@@ -10,11 +10,78 @@ const CONTACT = {
 };
 
 const VIDEOS = [
-  { id: "lSj11EPjAVk", title: "Inside Futian Market", sub: "District walkthrough · Yiwu" },
+  { id: "K3ykeVcrl6s", title: "Sourcing run", sub: "Booth to booth · Yiwu" },
+  { id: "lSj11EPjAVk", title: "Inside Futian Market", sub: "District walkthrough" },
   { id: "PR4Jhh8hdn0", title: "Supplier negotiation", sub: "Live booth visit" },
-  { id: "lCAr1ZOM_4o", title: "Sample inspection", sub: "Quality check on camera" },
-  { id: "K3ykeVcrl6s", title: "Sourcing run", sub: "Booth to booth" },
-  { id: "FzOqPhXL4WU", title: "On the ground in Yiwu", sub: "What we film for you" },
+];
+
+/* ============================================================
+   PACKAGES — same detailed cards as the Services page
+   ============================================================ */
+const PACKAGES = [
+  {
+    tier: "Insider", tagline: "Daily deal flow", price: "19.99", unit: "/ mo",
+    alt: "or $149/year — save 38%",
+    pricesub: "Membership · billed monthly",
+    features: [
+      "Daily supplier drops on WhatsApp",
+      "Private members-only group",
+      "Short video clips of fresh finds",
+      "Weekly market trend report",
+      "15% off every Scout report",
+      "Priority queue for SmallBatch & FullScale",
+    ],
+    policy: "Auto-renews monthly · cancel anytime · 3-day payment grace, then removed from the group · no refunds.",
+    cta: "Join Insider", featured: false,
+  },
+  {
+    tier: "Scout", tagline: "Test one product", price: "99", unit: "/ product",
+    alt: "Bundles: 3 for $249 · 5 for $399",
+    pricesub: "One-time · 48-hour delivery",
+    features: [
+      "3 verified suppliers",
+      "HD video shoot of each",
+      "Product info form — MOQ, price, lead time, customization",
+      "48-hour turnaround",
+    ],
+    notIncluded: "Detailed landed-cost estimate (offered in higher tiers)",
+    policy: "Don't like round one? Round two is free. No refund after round two. 100% refund if the product isn't in the market. No refund requests once the report is delivered.",
+    cta: "Start with Scout", featured: false,
+  },
+  {
+    tier: "SmallBatch", tagline: "Most popular", price: "299", unit: "+ commission",
+    alt: "Minimum order value $1,000",
+    pricesub: "Setup fee · FOB commission applies",
+    features: [
+      "Everything in Scout",
+      "Sample sourcing & shipping",
+      "Target-price negotiation",
+      "Brand & packaging review",
+      "1-on-1 WhatsApp line",
+      "Shipping coordination",
+      "Order management",
+    ],
+    commission: "FOB commission: 10% / 8% / 6% by order size.",
+    policy: "15-day decision window — after that the $299 setup fee is non-refundable. Samples + freight billed separately. Factory-visit costs separate, only with your approval.",
+    cta: "Pick SmallBatch", featured: true,
+  },
+  {
+    tier: "FullScale", tagline: "Full done-for-you", price: "599", unit: "+ commission",
+    alt: "$599 fully refunded once your order is confirmed",
+    pricesub: "Setup fee · refunded on order",
+    features: [
+      "Everything in SmallBatch",
+      "Factory visit (if needed)",
+      "Full production management",
+      "QC inspection (AQL)",
+      "China customs & export",
+      "International shipping coordination",
+      "Dedicated project manager",
+    ],
+    commission: "FOB commission: 8% / 6% / 4% by order size.",
+    policy: "15-day decision window. $599 fully refunded if you place the order, non-refundable if you don't. Factory-visit costs separate.",
+    cta: "Go FullScale", featured: false,
+  },
 ];
 
 /* ---------- ICONS ---------- */
@@ -36,9 +103,21 @@ const Icon = {
       <polyline points="13 6 19 12 13 18"/>
     </svg>
   ),
+  ArrowDown: (p) => (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <line x1="12" y1="5" x2="12" y2="19"/>
+      <polyline points="6 13 12 19 18 13"/>
+    </svg>
+  ),
   Check: (p) => (
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" {...p}>
       <polyline points="4 12 10 18 20 6"/>
+    </svg>
+  ),
+  Dollar: (p) => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <line x1="12" y1="1" x2="12" y2="23"/>
+      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
     </svg>
   ),
   Menu: (p) => (
@@ -52,24 +131,6 @@ const Icon = {
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" {...p}>
       <line x1="6" y1="6" x2="18" y2="18"/>
       <line x1="18" y1="6" x2="6" y2="18"/>
-    </svg>
-  ),
-  Camera: (p) => (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
-      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-      <circle cx="12" cy="13" r="4"/>
-    </svg>
-  ),
-  Map: (p) => (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
-      <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
-      <line x1="8" y1="2" x2="8" y2="18"/>
-      <line x1="16" y1="6" x2="16" y2="22"/>
-    </svg>
-  ),
-  Star: (p) => (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" {...p}>
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
     </svg>
   ),
   Instagram: (p) => (
@@ -90,6 +151,11 @@ const Icon = {
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
       <rect x="2" y="9" width="4" height="12"/>
       <circle cx="4" cy="4" r="2"/>
+    </svg>
+  ),
+  WhatsApp: (p) => (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" {...p}>
+      <path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85.98h.01a7.94 7.94 0 0 0 7.94-7.94 7.88 7.88 0 0 0-2.4-5.62zM12.06 18.5h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 1 1 12.2-3.48 6.6 6.6 0 0 1-6.6 6.57zm3.62-4.94c-.2-.1-1.17-.58-1.35-.65-.18-.07-.32-.1-.45.1-.13.2-.51.65-.63.78-.12.13-.23.15-.43.05-.2-.1-.84-.31-1.6-.99-.6-.53-1-1.18-1.12-1.38-.12-.2-.01-.31.09-.41.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.39-.33-.34-.45-.34h-.39c-.13 0-.35.05-.53.25s-.7.68-.7 1.66.71 1.93.81 2.06c.1.13 1.4 2.14 3.4 3 .47.21.84.33 1.13.42.48.15.91.13 1.25.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.08-.18-.13-.38-.23z"/>
     </svg>
   ),
 };
@@ -151,7 +217,7 @@ function Nav() {
           ))}
         </nav>
         <div className="nav-cta">
-          <a href="Contact.html" className="btn btn-primary btn-sm">Get Started <Icon.ArrowRight /></a>
+          <a href="#packages" className="btn btn-primary btn-sm">See Packages <Icon.ArrowDown /></a>
           <button className="mobile-toggle" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <Icon.Close /> : <Icon.Menu />}
           </button>
@@ -162,86 +228,43 @@ function Nav() {
           {links.map((l) => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
-          <a href="Contact.html" className="btn btn-primary" onClick={() => setOpen(false)}>Get Started <Icon.ArrowRight /></a>
+          <a href="#packages" className="btn btn-primary" onClick={() => setOpen(false)}>See Packages <Icon.ArrowDown /></a>
         </div>
       )}
     </header>
   );
 }
 
-/* ---------- HERO ---------- */
+/* ---------- HERO (compact) ---------- */
 function Hero() {
-  const featured = VIDEOS[0];
+  const trust = ["Based in Yiwu since 2024", "Video proof on every project", "75,000+ suppliers accessible"];
   return (
-    <section className="hero" data-screen-label="02 Hero">
-      <div className="container hero-grid">
-        <div>
-          <span className="badge">
-            <span className="dot"></span>
-            Real videos from Futian Market
-          </span>
-          <h1>
-            We Source It.<br/>
-            We Film It.<br/>
-            <span className="accent">You Decide.</span>
-          </h1>
-          <p className="hero-sub">
-            Product research, supplier negotiation, and quality control — all from our team on the ground in Yiwu, China.
-          </p>
-          <div className="hero-ctas">
-            <a href="Services.html" className="btn btn-primary">
-              See Our Packages <Icon.ArrowRight />
-            </a>
-            <a href="#work" className="btn btn-outline-light">
-              <Icon.Play width="16" height="16" /> Watch Our Finds
-            </a>
-          </div>
-          <div className="hero-trust">
-            <span className="stars">★★★★★</span>
-            <span>Filming every supplier visit, booth by booth</span>
-          </div>
+    <section className="hero hero-compact" data-screen-label="02 Hero">
+      <div className="container hero-inner">
+        <span className="badge">
+          <span className="dot"></span>
+          Real videos from Futian Market
+        </span>
+        <h1>
+          We Source It. We Film It. <span className="accent">You Decide.</span>
+        </h1>
+        <p className="hero-sub">
+          Product research, supplier negotiation, and quality control — all from our team on the ground in Yiwu, China.
+        </p>
+        <div className="hero-ctas">
+          <a href="#packages" className="btn btn-primary">
+            See Our Packages <Icon.ArrowDown />
+          </a>
+          <a href="#work" className="btn btn-outline-light">
+            <Icon.Play width="16" height="16" /> Watch Our Videos
+          </a>
         </div>
-        <div className="hero-card">
-          <div className="hero-video">
-            <span className="live-tag"><span className="pulse"></span>REAL FOOTAGE</span>
-            <iframe
-              src={`https://www.youtube.com/embed/${featured.id}?rel=0&playsinline=1&modestbranding=1`}
-              title={featured.title}
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <div className="hero-meta">
-            <div>
-              <div className="title">{featured.title}</div>
-              <div className="sub">{featured.sub}</div>
-            </div>
-            <a className="duration" href="#work">More finds ↓</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- TRUST BAR ---------- */
-function TrustBar() {
-  const items = [
-    { ic: <Icon.Pin />, text: "Based in Yiwu since 2024" },
-    { ic: <Icon.Camera />, text: "Video proof on every project" },
-    { ic: <Icon.Map />, text: "75,000+ suppliers accessible" },
-  ];
-  return (
-    <section className="trust-bar" data-screen-label="03 Trust Bar">
-      <div className="container">
-        <div className="trust-grid">
-          {items.map((it) => (
-            <div className="trust-item" key={it.text}>
-              <span className="trust-ic">{it.ic}</span>
-              <span>{it.text}</span>
-            </div>
+        <div className="hero-trustbar">
+          {trust.map((t, i) => (
+            <React.Fragment key={t}>
+              {i > 0 && <span className="sep">·</span>}
+              <span className="ht-item"><Icon.Check width="15" height="15" />{t}</span>
+            </React.Fragment>
           ))}
         </div>
       </div>
@@ -249,109 +272,65 @@ function TrustBar() {
   );
 }
 
-/* ---------- HOW IT WORKS ---------- */
-function HowItWorks() {
-  const steps = [
-    {
-      n: "1",
-      title: "Tell Us What You Need",
-      body: "Share your product idea, target price, MOQ, and any reference links. We'll confirm scope within 24 hours.",
-      bullets: ["Free discovery chat", "Niche & competitor brief", "Target landed cost range"],
-    },
-    {
-      n: "2",
-      title: "We Hit the Market",
-      body: "Our team walks Futian Market in person — filming booths, negotiating prices, collecting samples. No middlemen.",
-      bullets: ["Live video from every supplier", "3+ quotes per product", "Sample shipped to your door"],
-    },
-    {
-      n: "3",
-      title: "You Get the Report",
-      body: "A full sourcing report with videos, supplier profiles, prices and MOQs, plus our recommendation. You decide.",
-      bullets: ["Video + info-form deliverables", "MOQ, price & lead time", "QC checklist before shipment"],
-    },
-  ];
+/* ---------- PACKAGES ---------- */
+function Packages() {
   return (
-    <section className="section how" id="how" data-screen-label="04 How It Works">
+    <section className="section packages" id="packages" data-screen-label="03 Packages">
       <div className="container">
         <div className="section-head" style={{textAlign: "center"}}>
-          <span className="eyebrow">How it works</span>
-          <h2>Three steps. Zero guesswork.</h2>
-          <p style={{margin: "0 auto"}}>From product brief to a vetted supplier with video evidence — usually within a week.</p>
+          <span className="eyebrow">Packages</span>
+          <h2>Simple pricing. Pick your stage.</h2>
+          <p style={{margin: "0 auto"}}>From daily deal flow at $19.99/mo to a full done-for-you order. No factory kickbacks — commission only on the FOB product value.</p>
         </div>
-        <div className="how-grid">
-          {steps.map((s, i) => (
-            <div className="step-card" key={s.n}>
-              <div className="step-num">{s.n}</div>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
+        <div className="pricing-grid">
+          {PACKAGES.map((p) => (
+            <div className={"price-card" + (p.featured ? " featured" : "")} key={p.tier}>
+              {p.featured && <span className="featured-tag">Most Popular</span>}
+              <div className="tier">{p.tier}</div>
+              <div className="tagline">{p.tagline}</div>
+              <div className="price">
+                <span className="currency">$</span>{p.price}<span className="unit">{p.unit}</span>
+              </div>
+              {p.alt && <div className="price-alt">{p.alt}</div>}
+              <div className="pricesub">{p.pricesub}</div>
               <ul>
-                {s.bullets.map((b) => (
-                  <li key={b}><span className="check"><Icon.Check /></span>{b}</li>
+                {p.features.map((f) => (
+                  <li key={f}><span className="check"><Icon.Check /></span>{f}</li>
                 ))}
               </ul>
-              {i < steps.length - 1 && <div className="arrow-step"><Icon.ArrowRight /></div>}
+              {p.notIncluded && <div className="not-incl"><strong>Not included:</strong> {p.notIncluded}</div>}
+              {p.commission && <div className="comm-hint"><Icon.Dollar width="15" height="15" /> {p.commission}</div>}
+              <button className={"btn btn-block " + (p.featured ? "btn-primary" : "btn-ghost-dark")} onClick={() => window.location.href = "Contact.html"}>
+                {p.cta} <Icon.ArrowRight />
+              </button>
+              <div className="policy-note">{p.policy}</div>
             </div>
           ))}
+        </div>
+        <div className="packages-foot">
+          <span className="currency-note">
+            <Icon.Dollar width="15" height="15" />
+            All prices in <strong>USD</strong>. Commission is on the FOB product value only — shipping never included.
+          </span>
+          <a href="Services.html" className="view-details">View full details <Icon.ArrowRight /></a>
         </div>
       </div>
     </section>
   );
 }
 
-/* ---------- SAVINGS (Before / After) ---------- */
-function Savings() {
-  const rows = [
-    { name: "Product A", before: 45.00, after: 8.50, save: 81 },
-    { name: "Product B", before: 28.00, after: 6.20, save: 78 },
-    { name: "Product C", before: 62.00, after: 14.00, save: 77 },
-  ];
-  const fmt = (n) => "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+/* ---------- VIDEO STRIP ---------- */
+function VideoStrip() {
   return (
-    <section className="section savings" data-screen-label="05 Savings">
-      <div className="container">
-        <div className="section-head" style={{textAlign: "center"}}>
-          <span className="eyebrow">The math</span>
-          <h2>Real savings from real sourcing.</h2>
-          <p style={{margin: "0 auto"}}>What sellers pay on Amazon versus what the same product costs sourced directly from Yiwu.</p>
-        </div>
-        <div className="savings-grid">
-          {rows.map((r) => (
-            <div className="savings-card" key={r.name}>
-              <div className="sv-name">{r.name}</div>
-              <div className="sv-row">
-                <div className="sv-side before">
-                  <span className="sv-label">Amazon</span>
-                  <span className="sv-price">{fmt(r.before)}</span>
-                </div>
-                <span className="sv-arrow"><Icon.ArrowRight /></span>
-                <div className="sv-side after">
-                  <span className="sv-label">Yiwu</span>
-                  <span className="sv-price">{fmt(r.after)}</span>
-                </div>
-              </div>
-              <div className="sv-save">{r.save}% savings</div>
-            </div>
-          ))}
-        </div>
-        <p className="savings-note">Example figures shown — real client comparisons will appear here as projects complete.</p>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- SEE OUR WORK ---------- */
-function SeeOurWork() {
-  return (
-    <section className="section work" id="work" data-screen-label="06 See Our Work">
+    <section className="section work" id="work" data-screen-label="04 Videos">
       <div className="container">
         <div className="section-head on-dark" style={{textAlign: "center"}}>
-          <span className="eyebrow">See our work</span>
+          <span className="eyebrow">Watch</span>
           <h2>Straight from the market floor.</h2>
           <p style={{margin: "0 auto"}}>Every supplier visit is filmed. This is the kind of footage you get with every project.</p>
         </div>
         <div className="short-grid work-grid">
-          {VIDEOS.slice(1).map((v) => (
+          {VIDEOS.map((v) => (
             <ShortCard key={v.id} video={v} />
           ))}
         </div>
@@ -360,25 +339,18 @@ function SeeOurWork() {
   );
 }
 
-/* ---------- FOUNDING CLIENT CTA ---------- */
-function FoundingClient() {
+/* ---------- FINAL CTA ---------- */
+function FinalCTA() {
   return (
-    <section className="founding" data-screen-label="07 Founding Client">
-      <div className="container">
-        <div className="founding-card">
-          <span className="founding-badge"><span className="dot"></span>Founding clients · only 10 spots</span>
-          <h2>Be one of our first 10 clients.</h2>
-          <p>
-            Get <strong>20% off any package</strong> — and have your testimonial featured right here on our site.
-            We're new, we're hungry, and we'll treat your first order like it's our own.
-          </p>
-          <div className="founding-ctas">
-            <a href="Contact.html" className="btn btn-primary">Claim your spot <Icon.ArrowRight /></a>
-            <a href="Services.html" className="btn btn-outline-light">See Packages</a>
-          </div>
-          <div className="founding-note">
-            <Icon.Pin width="14" height="14" /> Based in Yiwu, China · We source, we film, we deliver
-          </div>
+    <section className="final-cta" data-screen-label="05 CTA">
+      <div className="container final-cta-inner">
+        <span className="eyebrow" style={{color: "var(--orange)"}}>Let's go</span>
+        <h2>Ready to source smarter?</h2>
+        <p>Message us on WhatsApp — we reply within an hour during Yiwu business hours.</p>
+        <div className="final-cta-row">
+          <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener" className="btn btn-whatsapp">
+            <Icon.WhatsApp width="18" height="18" /> WhatsApp Us <Icon.ArrowRight />
+          </a>
         </div>
       </div>
     </section>
@@ -447,11 +419,9 @@ function App() {
     <>
       <Nav />
       <Hero />
-      <TrustBar />
-      <HowItWorks />
-      <Savings />
-      <SeeOurWork />
-      <FoundingClient />
+      <Packages />
+      <VideoStrip />
+      <FinalCTA />
       <Footer />
     </>
   );

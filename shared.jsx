@@ -293,8 +293,8 @@ function Footer() {
             <ul>
               <li><a href="FAQ.html">FAQ</a></li>
               <li><a href="Contact.html">Contact</a></li>
-              <li><a href="#">Refund Policy</a></li>
-              <li><a href="#">Terms · Privacy</a></li>
+              <li><a href={CONTACT.whatsappUrl} target="_blank" rel="noopener">WhatsApp</a></li>
+              <li><a href={CONTACT.mailto}>{CONTACT.email}</a></li>
             </ul>
           </div>
         </div>
