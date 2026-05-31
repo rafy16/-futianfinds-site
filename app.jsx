@@ -22,6 +22,7 @@ const PACKAGES = [
   {
     tier: "Insider", tagline: "Daily deal flow", price: "19.99", unit: "/ mo",
     alt: "or $149/year — save 38%",
+    altLinks: [{ label: "Get the annual plan ($149/yr)", href: "https://gsr4fx-wg.myshopify.com/cart/49775020671216:1" }],
     pricesub: "Membership · billed monthly",
     features: [
       "Daily supplier drops on WhatsApp",
@@ -32,11 +33,15 @@ const PACKAGES = [
       "Priority queue for SmallBatch & FullScale",
     ],
     policy: "Auto-renews monthly · cancel anytime · 3-day payment grace, then removed from the group · no refunds.",
-    cta: "Join Insider", featured: false,
+    cta: "Join Insider — Monthly", href: "https://gsr4fx-wg.myshopify.com/cart/49775020638448:1", featured: false,
   },
   {
     tier: "Scout", tagline: "Test one product", price: "99", unit: "/ product",
     alt: "Bundles: 3 for $249 · 5 for $399",
+    altLinks: [
+      { label: "Buy 3 products ($249)", href: "https://gsr4fx-wg.myshopify.com/cart/49775020769520:1" },
+      { label: "Buy 5 products ($399)", href: "https://gsr4fx-wg.myshopify.com/cart/49775020802288:1" },
+    ],
     pricesub: "One-time · 48-hour delivery",
     features: [
       "3 verified suppliers",
@@ -46,7 +51,7 @@ const PACKAGES = [
     ],
     notIncluded: "Detailed landed-cost estimate (offered in higher tiers)",
     policy: "Don't like round one? Round two is free. No refund after round two. 100% refund if the product isn't in the market. No refund requests once the report is delivered.",
-    cta: "Start with Scout", featured: false,
+    cta: "Start with Scout — 1 product", href: "https://gsr4fx-wg.myshopify.com/cart/49775020736752:1", featured: false,
   },
   {
     tier: "SmallBatch", tagline: "Most popular", price: "299", unit: "+ commission",
@@ -63,7 +68,7 @@ const PACKAGES = [
     ],
     commission: "FOB commission: 10% / 8% / 6% by order size.",
     policy: "15-day decision window — after that the $299 setup fee is non-refundable. Samples + freight billed separately. Factory-visit costs separate, only with your approval.",
-    cta: "Pick SmallBatch", featured: true,
+    cta: "Pick SmallBatch", href: "https://gsr4fx-wg.myshopify.com/cart/49775020867824:1", featured: true,
   },
   {
     tier: "FullScale", tagline: "Full done-for-you", price: "599", unit: "+ commission",
@@ -80,7 +85,7 @@ const PACKAGES = [
     ],
     commission: "FOB commission: 8% / 6% / 4% by order size.",
     policy: "15-day decision window. $599 fully refunded if you place the order, non-refundable if you don't. Factory-visit costs separate.",
-    cta: "Go FullScale", featured: false,
+    cta: "Go FullScale", href: "https://gsr4fx-wg.myshopify.com/cart/49775021031664:1", featured: false,
   },
 ];
 
@@ -185,7 +190,7 @@ function ShortCard({ video }) {
 /* ---------- LOGO ---------- */
 function Logo({ small }) {
   return (
-    <a href="FutianFinds Homepage.html" className="logo" aria-label="FutianFinds home">
+    <a href="/" className="logo" aria-label="FutianFinds home">
       <span className="pin"><Icon.Pin /></span>
       <span className="logo-stack">
         <span>
@@ -300,9 +305,16 @@ function Packages() {
               </ul>
               {p.notIncluded && <div className="not-incl"><strong>Not included:</strong> {p.notIncluded}</div>}
               {p.commission && <div className="comm-hint"><Icon.Dollar width="15" height="15" /> {p.commission}</div>}
-              <button className={"btn btn-block " + (p.featured ? "btn-primary" : "btn-ghost-dark")} onClick={() => window.location.href = "Contact.html"}>
+              <a className={"btn btn-block " + (p.featured ? "btn-primary" : "btn-ghost-dark")} href={p.href} target="_blank" rel="noopener">
                 {p.cta} <Icon.ArrowRight />
-              </button>
+              </a>
+              {p.altLinks && (
+                <div className="alt-links">
+                  {p.altLinks.map((a) => (
+                    <a key={a.href} href={a.href} target="_blank" rel="noopener">{a.label} <Icon.ArrowRight width="14" height="14" /></a>
+                  ))}
+                </div>
+              )}
               <div className="policy-note">{p.policy}</div>
             </div>
           ))}
