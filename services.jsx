@@ -7,7 +7,7 @@ const PACKAGES = [
   {
     tier: "Insider", tagline: "Daily deal flow", price: "19.99", unit: "/ mo",
     alt: "Subscription · cancel anytime",
-    altLinks: [{ label: "Save 38% — $149/year", href: "https://gsr4fx-wg.myshopify.com/cart/49775020671216:1?selling_plan=7778894064" }],
+    altLinks: [{ label: "Save 38% — $149/year", sub: { variantId: "gid://shopify/ProductVariant/49775020671216", sellingPlanId: "gid://shopify/SellingPlan/7778894064" } }],
     pricesub: "Membership · billed monthly",
     features: [
       "Daily supplier drops on WhatsApp",
@@ -18,7 +18,7 @@ const PACKAGES = [
       "Priority queue for SmallBatch & FullScale",
     ],
     policy: "Auto-renews monthly · cancel anytime · 3-day payment grace, then removed from the group · no refunds.",
-    cta: "Join Insider — $19.99/mo", href: "https://gsr4fx-wg.myshopify.com/cart/49775020638448:1?selling_plan=7778861296", featured: false,
+    cta: "Join Insider — $19.99/mo", sub: { variantId: "gid://shopify/ProductVariant/49775020638448", sellingPlanId: "gid://shopify/SellingPlan/7778861296" }, featured: false,
   },
   {
     tier: "Scout", tagline: "Test one product", price: "99", unit: "/ product",
@@ -74,6 +74,34 @@ const PACKAGES = [
   },
 ];
 
+/* ---------- INSIDER SUBSCRIPTION (Storefront API) ---------- */
+async function startInsiderSubscription(variantId, sellingPlanId) {
+  try {
+    const res = await fetch('https://gsr4fx-wg.myshopify.com/api/2026-04/graphql.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': '2656bc17d8cf37434d3f5d9af821c301'
+      },
+      body: JSON.stringify({
+        query: `mutation cartCreate($input: CartInput!) {
+          cartCreate(input: $input) {
+            cart { checkoutUrl }
+            userErrors { field message }
+          }
+        }`,
+        variables: {
+          input: { lines: [{ merchandiseId: variantId, quantity: 1, sellingPlanId: sellingPlanId }] }
+        }
+      })
+    });
+    const data = await res.json();
+    const url = data?.data?.cartCreate?.cart?.checkoutUrl;
+    if (url) { window.location.href = url; }
+    else { console.error('Cart error', data); alert('Bir sorun oluştu, lütfen tekrar deneyin.'); }
+  } catch (e) { console.error(e); alert('Bağlantı hatası, lütfen tekrar deneyin.'); }
+}
+
 function Packages() {
   return (
     <section className="section" data-screen-label="03 Packages">
@@ -101,13 +129,23 @@ function Packages() {
               </ul>
               {p.notIncluded && <div className="not-incl"><strong>Not included:</strong> {p.notIncluded}</div>}
               {p.commission && <div className="comm-hint"><Icon.Dollar width="15" height="15" /> {p.commission}</div>}
-              <a className={"btn btn-block " + (p.featured ? "btn-primary" : "btn-ghost-dark")} href={p.href} target="_blank" rel="noopener">
-                {p.cta} <Icon.ArrowRight />
-              </a>
+              {p.sub ? (
+                <button type="button" className={"btn btn-block " + (p.featured ? "btn-primary" : "btn-ghost-dark")} onClick={() => startInsiderSubscription(p.sub.variantId, p.sub.sellingPlanId)}>
+                  {p.cta} <Icon.ArrowRight />
+                </button>
+              ) : (
+                <a className={"btn btn-block " + (p.featured ? "btn-primary" : "btn-ghost-dark")} href={p.href} target="_blank" rel="noopener">
+                  {p.cta} <Icon.ArrowRight />
+                </a>
+              )}
               {p.altLinks && (
                 <div className="alt-links">
                   {p.altLinks.map((a) => (
-                    <a key={a.href} href={a.href} target="_blank" rel="noopener">{a.label} <Icon.ArrowRight width="14" height="14" /></a>
+                    a.sub ? (
+                      <button type="button" key={a.label} onClick={() => startInsiderSubscription(a.sub.variantId, a.sub.sellingPlanId)}>{a.label} <Icon.ArrowRight width="14" height="14" /></button>
+                    ) : (
+                      <a key={a.href} href={a.href} target="_blank" rel="noopener">{a.label} <Icon.ArrowRight width="14" height="14" /></a>
+                    )
                   ))}
                 </div>
               )}
