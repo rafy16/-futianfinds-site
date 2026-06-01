@@ -558,6 +558,28 @@
   }
   .price-card .btn-ghost-dark:hover { background: #0f1a25; }
 
+  /* Secondary option links rendered as bordered buttons */
+  .price-card .alt-links { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .price-card .alt-links a {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 11px 18px;
+    font-weight: 600; font-size: 14px; line-height: 1;
+    border-radius: 8px;
+    border: 1.5px solid rgba(27,43,58,0.22);
+    color: var(--navy); background: transparent;
+    transition: all .18s ease;
+  }
+  .price-card .alt-links a:hover {
+    border-color: var(--orange); color: var(--orange);
+    background: rgba(232,133,59,0.06); transform: translateY(-1px);
+  }
+  .price-card.featured .alt-links a {
+    border-color: rgba(255,255,255,0.35); color: #fff;
+  }
+  .price-card.featured .alt-links a:hover {
+    border-color: var(--orange); color: #fff; background: rgba(232,133,59,0.18);
+  }
+
   /* FOUNDER */
   .founder { background: var(--cream); }
   .founder-grid {
