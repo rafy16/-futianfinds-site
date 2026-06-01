@@ -138,13 +138,19 @@
   }
   .nav-links a:hover { color: #fff; }
   .nav-cta { display: flex; align-items: center; gap: 14px; }
+  .nav-login {
+    color: rgba(255,255,255,0.78);
+    font-size: 14px; font-weight: 500;
+    transition: color .15s;
+  }
+  .nav-login:hover { color: #fff; }
   .mobile-toggle {
     display: none;
     color: #fff; font-size: 22px;
     padding: 8px;
   }
   @media (max-width: 900px) {
-    .nav-links, .nav-cta .btn { display: none; }
+    .nav-links, .nav-cta .btn, .nav-login { display: none; }
     .mobile-toggle { display: inline-flex; }
   }
   .mobile-menu {

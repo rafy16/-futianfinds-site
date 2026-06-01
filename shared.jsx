@@ -206,7 +206,7 @@ const Icon = {
 
 function Logo({ small }) {
   return (
-    <a href="FutianFinds Homepage.html" className="logo" aria-label="FutianFinds home">
+    <a href="/" className="logo" aria-label="FutianFinds home">
       <span className="pin"><Icon.Pin /></span>
       <span className="logo-stack">
         <span>
@@ -238,7 +238,8 @@ function Nav({ active }) {
           ))}
         </nav>
         <div className="nav-cta">
-          <a href="Contact.html" className="btn btn-primary btn-sm">Get Started <Icon.ArrowRight /></a>
+          <a href="https://account.futianfinds.com" className="nav-login">Login</a>
+          <a href="https://wa.me/8619548858435" target="_blank" rel="noopener" className="btn btn-primary btn-sm">Get Started <Icon.ArrowRight /></a>
           <button className="mobile-toggle" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <Icon.Close /> : <Icon.Menu />}
           </button>
@@ -249,7 +250,8 @@ function Nav({ active }) {
           {NAV_LINKS.map((l) => (
             <a key={l.key} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
-          <a href="Contact.html" className="btn btn-primary" onClick={() => setOpen(false)}>Get Started <Icon.ArrowRight /></a>
+          <a href="https://account.futianfinds.com" onClick={() => setOpen(false)}>Login</a>
+          <a href="https://wa.me/8619548858435" target="_blank" rel="noopener" className="btn btn-primary" onClick={() => setOpen(false)}>Get Started <Icon.ArrowRight /></a>
         </div>
       )}
     </header>
@@ -293,6 +295,7 @@ function Footer() {
             <ul>
               <li><a href="FAQ.html">FAQ</a></li>
               <li><a href="Contact.html">Contact</a></li>
+              <li><a href="https://account.futianfinds.com">Login</a></li>
               <li><a href={CONTACT.whatsappUrl} target="_blank" rel="noopener">WhatsApp</a></li>
               <li><a href={CONTACT.mailto}>{CONTACT.email}</a></li>
             </ul>
@@ -316,7 +319,7 @@ function PageHero({ eyebrow, title, sub, page }) {
     <section className="page-hero" data-screen-label="02 Page Hero">
       <div className="container page-hero-inner">
         <div className="breadcrumb">
-          <a href="FutianFinds Homepage.html">Home</a>
+          <a href="/">Home</a>
           <span className="sep">/</span>
           <span style={{color: "rgba(255,255,255,0.85)"}}>{page}</span>
         </div>
@@ -335,8 +338,8 @@ function FinalCTA({ title = "Ready to Source Smarter?", sub = "One product. Fort
         <h2>{title}</h2>
         <p>{sub}</p>
         <div className="final-cta-row">
-          <a href={primaryHref} className="btn btn-primary">{primaryLabel} <Icon.ArrowRight /></a>
-          {secondaryLabel && <a href={secondaryHref} className="btn btn-outline-light">{secondaryLabel}</a>}
+          <a href={primaryHref} {...(/^https?:/.test(primaryHref) ? { target: "_blank", rel: "noopener" } : {})} className="btn btn-primary">{primaryLabel} <Icon.ArrowRight /></a>
+          {secondaryLabel && <a href={secondaryHref} {...(/^https?:/.test(secondaryHref) ? { target: "_blank", rel: "noopener" } : {})} className="btn btn-outline-light">{secondaryLabel}</a>}
         </div>
         <div className="note">
           <Icon.Pin width="14" height="14" /> Based in Yiwu, China · We source, we film, we deliver

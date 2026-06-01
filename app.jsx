@@ -222,6 +222,7 @@ function Nav() {
           ))}
         </nav>
         <div className="nav-cta">
+          <a href="https://account.futianfinds.com" className="nav-login">Login</a>
           <a href="#packages" className="btn btn-primary btn-sm">See Packages <Icon.ArrowDown /></a>
           <button className="mobile-toggle" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <Icon.Close /> : <Icon.Menu />}
@@ -233,6 +234,7 @@ function Nav() {
           {links.map((l) => (
             <a key={l.label} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
+          <a href="https://account.futianfinds.com" onClick={() => setOpen(false)}>Login</a>
           <a href="#packages" className="btn btn-primary" onClick={() => setOpen(false)}>See Packages <Icon.ArrowDown /></a>
         </div>
       )}
@@ -445,6 +447,7 @@ function Footer() {
             <ul>
               <li><a href="FAQ.html">FAQ</a></li>
               <li><a href="Contact.html">Contact</a></li>
+              <li><a href="https://account.futianfinds.com">Login</a></li>
               <li><a href={CONTACT.whatsappUrl} target="_blank" rel="noopener">WhatsApp</a></li>
               <li><a href={"mailto:" + CONTACT.email}>{CONTACT.email}</a></li>
             </ul>
