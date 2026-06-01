@@ -21,8 +21,8 @@ const VIDEOS = [
 const PACKAGES = [
   {
     tier: "Insider", tagline: "Daily deal flow", price: "19.99", unit: "/ mo",
-    alt: "or $149/year — save 38%",
-    altLinks: [{ label: "Get the annual plan ($149/yr)", href: "https://gsr4fx-wg.myshopify.com/cart/49775020671216:1" }],
+    alt: "Subscription · cancel anytime",
+    altLinks: [{ label: "Save 38% — $149/year", href: "https://gsr4fx-wg.myshopify.com/cart/49775020671216:1?selling_plan=7778894064" }],
     pricesub: "Membership · billed monthly",
     features: [
       "Daily supplier drops on WhatsApp",
@@ -33,14 +33,14 @@ const PACKAGES = [
       "Priority queue for SmallBatch & FullScale",
     ],
     policy: "Auto-renews monthly · cancel anytime · 3-day payment grace, then removed from the group · no refunds.",
-    cta: "Join Insider — Monthly", href: "https://gsr4fx-wg.myshopify.com/cart/49775020638448:1", featured: false,
+    cta: "Join Insider — $19.99/mo", href: "https://gsr4fx-wg.myshopify.com/cart/49775020638448:1?selling_plan=7778861296", featured: false,
   },
   {
     tier: "Scout", tagline: "Test one product", price: "99", unit: "/ product",
-    alt: "Bundles: 3 for $249 · 5 for $399",
+    alt: "Bundle & save — multi-product packs",
     altLinks: [
-      { label: "Buy 3 products ($249)", href: "https://gsr4fx-wg.myshopify.com/cart/49775020769520:1" },
-      { label: "Buy 5 products ($399)", href: "https://gsr4fx-wg.myshopify.com/cart/49775020802288:1" },
+      { label: "3 products — $249", href: "https://gsr4fx-wg.myshopify.com/cart/49775020769520:1" },
+      { label: "5 products — $399", href: "https://gsr4fx-wg.myshopify.com/cart/49775020802288:1" },
     ],
     pricesub: "One-time · 48-hour delivery",
     features: [
@@ -68,7 +68,7 @@ const PACKAGES = [
     ],
     commission: "FOB commission: 10% / 8% / 6% by order size.",
     policy: "15-day decision window — after that the $299 setup fee is non-refundable. Samples + freight billed separately. Factory-visit costs separate, only with your approval.",
-    cta: "Pick SmallBatch", href: "https://gsr4fx-wg.myshopify.com/cart/49775020867824:1", featured: true,
+    cta: "Start SmallBatch — $299", href: "https://gsr4fx-wg.myshopify.com/cart/49775020867824:1", featured: true,
   },
   {
     tier: "FullScale", tagline: "Full done-for-you", price: "599", unit: "+ commission",
@@ -85,7 +85,7 @@ const PACKAGES = [
     ],
     commission: "FOB commission: 8% / 6% / 4% by order size.",
     policy: "15-day decision window. $599 fully refunded if you place the order, non-refundable if you don't. Factory-visit costs separate.",
-    cta: "Go FullScale", href: "https://gsr4fx-wg.myshopify.com/cart/49775021031664:1", featured: false,
+    cta: "Go FullScale — $599", href: "https://gsr4fx-wg.myshopify.com/cart/49775021031664:1", featured: false,
   },
 ];
 
