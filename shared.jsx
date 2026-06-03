@@ -202,6 +202,21 @@ const Icon = {
       <circle cx="4" cy="4" r="2"/>
     </svg>
   ),
+  Facebook: (p) => (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    </svg>
+  ),
+  TikTok: (p) => (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M9 17a3 3 0 1 0 3-3V4c1 2 2.5 3 5 3"/>
+    </svg>
+  ),
+  X: (p) => (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M4 4l16 16M20 4L4 20"/>
+    </svg>
+  ),
 };
 
 function Logo({ small }) {
@@ -267,9 +282,12 @@ function Footer() {
             <Logo small />
             <p className="footer-blurb">A boots-on-the-ground sourcing service for Amazon FBA, Shopify D2C, and wholesale importers. Based in Yiwu, China.</p>
             <div className="socials">
-              <a href="#" aria-label="Instagram"><Icon.Instagram /></a>
-              <a href="#" aria-label="YouTube"><Icon.YouTube /></a>
-              <a href="#" aria-label="LinkedIn"><Icon.LinkedIn /></a>
+              <a href="https://www.instagram.com/futianfinds" target="_blank" rel="noopener" aria-label="Instagram"><Icon.Instagram /></a>
+              <a href="https://www.facebook.com/profile.php?id=61590800181843" target="_blank" rel="noopener" aria-label="Facebook"><Icon.Facebook /></a>
+              <a href="https://x.com/findsfutian" target="_blank" rel="noopener" aria-label="X (Twitter)"><Icon.X /></a>
+              <a href="https://www.tiktok.com/@futianfinds" target="_blank" rel="noopener" aria-label="TikTok"><Icon.TikTok /></a>
+              <a href="https://www.youtube.com/@futianfinds" target="_blank" rel="noopener" aria-label="YouTube"><Icon.YouTube /></a>
+              <a href="https://www.linkedin.com/in/raif-hella%C3%A7-363505326/" target="_blank" rel="noopener" aria-label="LinkedIn"><Icon.LinkedIn /></a>
             </div>
           </div>
           <div>
@@ -305,9 +323,9 @@ function Footer() {
         <div className="copyright">
           <div>© 2026 FutianFinds Sourcing Co. Ltd · Yiwu, Zhejiang, China</div>
           <div className="right">
-            <a href="#">Terms</a>
-            <a href="#">Privacy</a>
-            <a href="#">Cookies</a>
+            <a href="https://checkout.shopify.com/84142489840/policies/45847740656.html?locale=en" target="_blank" rel="noopener">Terms</a>
+            <a href="https://checkout.shopify.com/84142489840/policies/45710803184.html?locale=en" target="_blank" rel="noopener">Privacy</a>
+            <a href="https://checkout.shopify.com/84142489840/policies/45847675120.html?locale=en" target="_blank" rel="noopener">Refund</a>
           </div>
         </div>
       </div>

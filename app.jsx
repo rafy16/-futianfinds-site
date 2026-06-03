@@ -158,6 +158,21 @@ const Icon = {
       <circle cx="4" cy="4" r="2"/>
     </svg>
   ),
+  Facebook: (p) => (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    </svg>
+  ),
+  TikTok: (p) => (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M9 17a3 3 0 1 0 3-3V4c1 2 2.5 3 5 3"/>
+    </svg>
+  ),
+  X: (p) => (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <path d="M4 4l16 16M20 4L4 20"/>
+    </svg>
+  ),
   WhatsApp: (p) => (
     <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" {...p}>
       <path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85.98h.01a7.94 7.94 0 0 0 7.94-7.94 7.88 7.88 0 0 0-2.4-5.62zM12.06 18.5h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 1 1 12.2-3.48 6.6 6.6 0 0 1-6.6 6.57zm3.62-4.94c-.2-.1-1.17-.58-1.35-.65-.18-.07-.32-.1-.45.1-.13.2-.51.65-.63.78-.12.13-.23.15-.43.05-.2-.1-.84-.31-1.6-.99-.6-.53-1-1.18-1.12-1.38-.12-.2-.01-.31.09-.41.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.39-.33-.34-.45-.34h-.39c-.13 0-.35.05-.53.25s-.7.68-.7 1.66.71 1.93.81 2.06c.1.13 1.4 2.14 3.4 3 .47.21.84.33 1.13.42.48.15.91.13 1.25.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.05-.08-.18-.13-.38-.23z"/>
@@ -419,9 +434,12 @@ function Footer() {
             <Logo small />
             <p className="footer-blurb">A boots-on-the-ground sourcing service for Amazon FBA, Shopify D2C, and wholesale importers. Based in Yiwu, China.</p>
             <div className="socials">
-              <a href="#" aria-label="Instagram"><Icon.Instagram /></a>
-              <a href="#" aria-label="YouTube"><Icon.YouTube /></a>
-              <a href="#" aria-label="LinkedIn"><Icon.LinkedIn /></a>
+              <a href="https://www.instagram.com/futianfinds" target="_blank" rel="noopener" aria-label="Instagram"><Icon.Instagram /></a>
+              <a href="https://www.facebook.com/profile.php?id=61590800181843" target="_blank" rel="noopener" aria-label="Facebook"><Icon.Facebook /></a>
+              <a href="https://x.com/findsfutian" target="_blank" rel="noopener" aria-label="X (Twitter)"><Icon.X /></a>
+              <a href="https://www.tiktok.com/@futianfinds" target="_blank" rel="noopener" aria-label="TikTok"><Icon.TikTok /></a>
+              <a href="https://www.youtube.com/@futianfinds" target="_blank" rel="noopener" aria-label="YouTube"><Icon.YouTube /></a>
+              <a href="https://www.linkedin.com/in/raif-hella%C3%A7-363505326/" target="_blank" rel="noopener" aria-label="LinkedIn"><Icon.LinkedIn /></a>
             </div>
           </div>
           <div>
@@ -457,9 +475,9 @@ function Footer() {
         <div className="copyright">
           <div>© 2026 FutianFinds · Yiwu, Zhejiang, China</div>
           <div className="right">
-            <a href="#">Terms</a>
-            <a href="#">Privacy</a>
-            <a href="#">Cookies</a>
+            <a href="https://checkout.shopify.com/84142489840/policies/45847740656.html?locale=en" target="_blank" rel="noopener">Terms</a>
+            <a href="https://checkout.shopify.com/84142489840/policies/45710803184.html?locale=en" target="_blank" rel="noopener">Privacy</a>
+            <a href="https://checkout.shopify.com/84142489840/policies/45847675120.html?locale=en" target="_blank" rel="noopener">Refund</a>
           </div>
         </div>
       </div>
