@@ -301,6 +301,7 @@ function Footer() {
             </ul>
           </div>
         </div>
+        <div className="legal-line">FutianFinds is a service of Lunofy LLC · info@lunofy.com · WhatsApp +86 195 4885 8435 · Yiwu, China</div>
         <div className="copyright">
           <div>© 2026 FutianFinds Sourcing Co. Ltd · Yiwu, Zhejiang, China</div>
           <div className="right">
